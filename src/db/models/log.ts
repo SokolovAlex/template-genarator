@@ -1,18 +1,12 @@
 import { Model, DataTypes, NOW } from 'sequelize';
+import { User } from '../models/user';
+import { getArrayFromEnum } from '../../utils'
 
 export enum ActionType {
   CREATE,
   UPDATE,
   DELETE,
 };
-
-const getArrayFromEnum = (enumValue: object): Array<string> => {
-  const values: Array<string> = [];
-  for (let value in enumValue) {
-    values.push(enumValue[value]);
-  }
-  return values;
-}
 
 const actionTypeValues: Array<string> = getArrayFromEnum(ActionType);
 
@@ -24,6 +18,8 @@ class Log extends Model {
 
   public url!: string;
   public pixel!: string;
+
+  public user!: User;
 
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
@@ -43,6 +39,7 @@ const fields = {
     type: DataTypes.ENUM,
     values: actionTypeValues,
     allowNull: false,
+    defaultValue: ActionType.CREATE,
   },
   url: {
     type: new DataTypes.STRING(128),
@@ -54,4 +51,8 @@ const fields = {
   },
 }
 
-export { Log, fields };
+const associate = (): void => {
+  Log.belongsTo(User, { foreignKey: 'userId', as: 'user' });
+};
+
+export { Log, fields, associate };
