@@ -7,6 +7,7 @@
   "license": "MIT",
   "scripts": {
     "db": "ts-node ./src/db/create-db.ts",
+    "seed": "ts-node ./src/db/seed.ts",
     "server": "ts-node ./src/server/app.ts"
   },
   "dependencies": {

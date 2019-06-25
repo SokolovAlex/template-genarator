@@ -1,5 +1,5 @@
 import { Model, DataTypes, NOW } from 'sequelize';
-import { User } from '../models/user';
+import { User, IUser } from '../models/user';
 import { getArrayFromEnum } from '../../utils'
 
 export enum ActionType {
@@ -8,9 +8,17 @@ export enum ActionType {
   DELETE,
 };
 
+export interface LogAttributes {
+  datetime: Date;
+  action_type: ActionType;
+  url: string;
+  pixel: string;
+  user: IUser;
+}
+
 const actionTypeValues: Array<string> = getArrayFromEnum(ActionType);
 
-class Log extends Model {
+class Log extends Model implements LogAttributes{
   public id!: number;
 
   public datetime!: Date;

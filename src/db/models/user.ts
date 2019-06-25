@@ -2,7 +2,11 @@ import { Model, DataTypes } from 'sequelize';
 import { Log } from '../models/log';
 import { ParameterValue } from '../models/parameterValue';
 
-class User extends Model {
+export interface IUser {
+  login: string;
+}
+
+class User extends Model implements IUser {
   public login!: string;
   public lastEnterAt!: Date;
   
