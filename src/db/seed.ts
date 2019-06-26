@@ -1,6 +1,6 @@
 import { db, User, Log } from "./db";
 import { IUser } from './models/user';
-import { LogAttributes, ActionType } from './models/log';
+import { ActionType } from './models/log';
 
 (async () => {
   await db.sync({ force: true });
@@ -9,20 +9,30 @@ import { LogAttributes, ActionType } from './models/log';
     login: "sokolov_alex",
   };
 
-  const user = User.create(userData);
-
+  const user = await User.create(userData);
   console.log(user);
 
-  const log: LogAttributes = {
-    action_type: ActionType.CREATE,
+  const log = await user.createLog({
     datetime: new Date(),
-    pixel: '',
-    url: '',
-    user: userData
-  };
+    action_type: ActionType.CREATE,
+    url: "2",
+    pixel: "4"
+  });
 
-  
-  Log.create(log);
+  console.log("============");
 
+  console.log(log);
+
+  console.log("============");
+
+  const ourUser = await User.findByPk('sokolov_alex', {
+    include: [User.associations.logs],
+    rejectOnEmpty: true, // Specifying true here removes `null` from the return type!
+  });
+  console.log(ourUser.logs![0]);
+
+  console.log(ourUser.logs!);
+
+  console.log("============");
 
 })()

@@ -1,6 +1,8 @@
-import { Model, DataTypes, NOW } from 'sequelize';
+import Sequelize from 'sequelize';
 import { User, IUser } from '../models/user';
 import { getArrayFromEnum } from '../../utils'
+
+const {Model, DataTypes, NOW } = Sequelize;
 
 export enum ActionType {
   CREATE,
@@ -13,7 +15,7 @@ export interface LogAttributes {
   action_type: ActionType;
   url: string;
   pixel: string;
-  user: IUser;
+  user: string;
 }
 
 const actionTypeValues: Array<string> = getArrayFromEnum(ActionType);
@@ -27,7 +29,8 @@ class Log extends Model implements LogAttributes{
   public url!: string;
   public pixel!: string;
 
-  public user!: User;
+  // public user!: User;
+  public user!: string;
 
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
@@ -57,10 +60,19 @@ const fields = {
     type: new DataTypes.STRING(128),
     allowNull: false,
   },
+  user: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
 }
 
-const associate = (): void => {
-  Log.belongsTo(User, { foreignKey: 'userId', as: 'user' });
+const initLog = (sequelize: Sequelize.Sequelize): void => {
+  Log.init(fields, {
+    tableName: "Logs",
+    sequelize
+  });
+
+  //Log.belongsTo(User, { foreignKey: 'userId', as: 'user' });
 };
 
-export { Log, fields, associate };
+export { Log, initLog };
