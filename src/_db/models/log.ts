@@ -10,6 +10,8 @@ export enum ActionType {
   DELETE,
 };
 
+const actionTypeValues: Array<string> = getArrayFromEnum(ActionType);
+
 export interface LogAttributes {
   datetime: Date;
   action_type: ActionType;
@@ -18,20 +20,13 @@ export interface LogAttributes {
   user: string;
 }
 
-const actionTypeValues: Array<string> = getArrayFromEnum(ActionType);
-
 class Log extends Model implements LogAttributes{
   public id!: number;
-
   public datetime!: Date;
   public action_type!: ActionType;
-
   public url!: string;
   public pixel!: string;
-
-  // public user!: User;
   public user!: string;
-
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
 }
@@ -71,8 +66,6 @@ const initLog = (sequelize: Sequelize.Sequelize): void => {
     tableName: "Logs",
     sequelize
   });
-
-  //Log.belongsTo(User, { foreignKey: 'userId', as: 'user' });
 };
 
 export { Log, initLog };

@@ -20,13 +20,13 @@ class User extends Model {
     logs: Association<User, Log>;
   };
 
-  public getLog!: HasManyGetAssociationsMixin<Log>; // Note the null assertions!
+  public getLog!: HasManyGetAssociationsMixin<Log>;
   public addLog!: HasManyAddAssociationMixin<Log, number>;
   public hasLog!: HasManyHasAssociationMixin<Log, number>;
   public countLog!: HasManyCountAssociationsMixin;
   public createLog!: HasManyCreateAssociationMixin<Log>;
 
-  //public parameterValues?: ParameterValue[];
+  public parameterValues?: ParameterValue[];
 
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;

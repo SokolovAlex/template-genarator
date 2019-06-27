@@ -1,6 +1,7 @@
 # template-genarator
 
+# entities
+https://typeorm.io/#/entities
 
 
-//sequalize example
-https://vivacitylabs.com/setup-typescript-sequelize/
+typeorm-model-generator
