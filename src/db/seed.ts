@@ -70,4 +70,41 @@ import { Template2Parameter } from './entity/template2Parameter';
   newT2p.parameter = param;
   
   t2pRepo.save(newT2p);
+
+  createTemplates(templateRepo)
 })();
+
+const createTemplates = async (repo) => {
+  const data1 = new Template();
+  data1.key = "fakeTemplateKey1";
+  data1.name = "fakeTemplateName1";
+  data1.active = true;
+  data1.description = "description1";
+  data1.pixelTemplate = "pixelTemplate1";
+  data1.trafficSource = "trafficSource1";
+  data1.appendParameters = "appendParameters1";
+
+  await repo.save(data1);
+
+  const data2 = new Template();
+  data2.key = "fakeTemplateKey2";
+  data2.name = "fakeTemplateName2";
+  data2.active = true;
+  data2.description = "description2";
+  data2.pixelTemplate = "pixelTemplate2";
+  data2.trafficSource = "trafficSource2";
+  data2.appendParameters = "appendParameters2";
+
+  await repo.save(data2);
+
+  const data3 = new Template();
+  data3.key = "fakeTemplateKey3";
+  data3.name = "fakeTemplateName3";
+  data3.active = true;
+  data3.description = "description3";
+  data3.pixelTemplate = "pixelTemplate3";
+  data3.trafficSource = "trafficSource3";
+  data3.appendParameters = "appendParameters3";
+
+  const template = await repo.save(data3);
+}
