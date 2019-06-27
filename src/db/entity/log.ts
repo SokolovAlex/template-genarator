@@ -1,9 +1,10 @@
-import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, ManyToOne } from "typeorm";
+import { User } from './user';
 
 export enum ActionType {
-  CREATE,
-  UPDATE,
-  DELETE,
+  Create,
+  Update,
+  Delete,
 };
 
 @Entity()
@@ -19,10 +20,13 @@ export class Log {
 
   @Column({
     type: "varchar",
-    default: ActionType.CREATE
+    default: ActionType.Create
   })
   action_type: ActionType;
 
   @CreateDateColumn()
   createdAt: Date;
+
+  @ManyToOne(() => User, (user) => user.logs)
+  public user: User;
 }
