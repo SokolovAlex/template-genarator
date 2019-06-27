@@ -1,28 +1,28 @@
-import { Entity, PrimaryColumn, Column, OneToMany } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryColumn } from 'typeorm';
 import { Template2Parameter } from './template2Parameter';
 
 @Entity()
 export class Template {
   @PrimaryColumn()
-  key: string;
+  public key: string;
 
   @Column()
-  name: string;
+  public name: string;
 
   @Column()
-  trafficSource: string;
+  public trafficSource: string;
 
   @Column()
-  active: boolean;
+  public active: boolean;
 
   @Column()
-  description: string;
+  public description: string;
 
   @Column()
-  appendParameters: string;
+  public appendParameters: string;
 
   @Column()
-  pixelTemplate: string;
+  public pixelTemplate: string;
 
   @OneToMany(() => Template2Parameter, (t2p) => t2p.template)
   public templates2params: Template2Parameter[];

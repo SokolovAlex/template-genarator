@@ -1,14 +1,14 @@
-import { Entity, PrimaryColumn, Column, OneToMany } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryColumn } from 'typeorm';
 import { Log } from './log';
 import { ParameterValue } from './parameterValue';
 
 @Entity()
 export class User {
   @PrimaryColumn()
-  email: string;
+  public email: string;
 
   @Column('datetime')
-  lastEnterAt: Date;
+  public lastEnterAt: Date;
 
   @OneToMany(() => Log, (log) => log.user)
   public logs: Log[];

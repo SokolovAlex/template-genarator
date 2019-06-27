@@ -1,7 +1,7 @@
-import { TemplateRoute } from "./templates";
-import { PagesRoute } from "./pages";
+import { PagesRoute } from './pages';
+import { TemplateRoute } from './templates';
 
 export {
   TemplateRoute,
-  PagesRoute
-}
+  PagesRoute,
+};

@@ -1,5 +1,5 @@
 
-import { Request, Response } from "express";
+import { Request, Response } from 'express';
 
 export class BaseRoute {
   protected title: string;
@@ -7,7 +7,7 @@ export class BaseRoute {
   private scripts: string[];
 
   constructor() {
-    this.title = "Tour of Heros";
+    this.title = 'Tour of Heros';
     this.scripts = [];
   }
 
@@ -17,7 +17,7 @@ export class BaseRoute {
   }
 
   public render(req: Request, res: Response, view: string, options?: Object) {
-    res.locals.BASE_URL = "/";
+    res.locals.BASE_URL = '/';
 
     res.locals.scripts = this.scripts;
 

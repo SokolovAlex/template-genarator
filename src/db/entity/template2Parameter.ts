@@ -1,14 +1,14 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
-import { Template } from "./template";
-import { Parameter } from "./parameter";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Parameter } from './parameter';
+import { Template } from './template';
 
 @Entity()
 export class Template2Parameter {
   @PrimaryGeneratedColumn()
-  id: number;
+  public id: number;
 
   @Column()
-  order: number;
+  public order: number;
 
   @ManyToOne(() => Template, (template) => template.templates2params)
   public template: Template;

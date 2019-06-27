@@ -1,36 +1,36 @@
-import { Entity, PrimaryColumn, Column, OneToMany, OneToOne, JoinColumn } from "typeorm";
+import { Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryColumn } from 'typeorm';
 import { ParameterValue } from './parameterValue';
-import { Template2Parameter } from "./template2Parameter";
+import { Template2Parameter } from './template2Parameter';
 
 export enum InputType {
   Select,
   Radio,
   Checkbox,
-};
+}
 
 @Entity()
 export class Parameter {
   @PrimaryColumn()
-  key: string;
+  public key: string;
 
   @Column()
-  name: string;
+  public name: string;
 
   @Column({
-    type: "varchar",
-    default: InputType.Select
+    type: 'varchar',
+    default: InputType.Select,
   })
-  input_type: InputType;
+  public input_type: InputType;
 
   @Column()
-  user_supplied: string;
+  public user_supplied: string;
 
   @Column()
-  omniture_name: string;
+  public omniture_name: string;
 
-  @OneToOne(type => ParameterValue)
+  @OneToOne((type) => ParameterValue)
   @JoinColumn()
-  default_value: ParameterValue;
+  public default_value: ParameterValue;
 
   @OneToMany(() => ParameterValue, (value) => value.parameter)
   public values: ParameterValue[];

@@ -1,31 +1,31 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, ManyToOne } from "typeorm";
+import { Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { User } from './user';
 
 export enum ActionType {
   Create,
   Update,
   Delete,
-};
+}
 
 @Entity()
 export class Log {
   @PrimaryGeneratedColumn()
-  id: number;
+  public id: number;
 
   @Column()
-  url: string;
+  public url: string;
 
   @Column()
-  pixel: string;
+  public pixel: string;
 
   @Column({
-    type: "varchar",
-    default: ActionType.Create
+    type: 'varchar',
+    default: ActionType.Create,
   })
-  action_type: ActionType;
+  public actionType: ActionType;
 
   @CreateDateColumn()
-  createdAt: Date;
+  public createdAt: Date;
 
   @ManyToOne(() => User, (user) => user.logs)
   public user: User;
