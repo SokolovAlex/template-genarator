@@ -84,8 +84,6 @@ const createTemplates = async (repo) => {
   data1.trafficSource = "trafficSource1";
   data1.appendParameters = "appendParameters1";
 
-  await repo.save(data1);
-
   const data2 = new Template();
   data2.key = "fakeTemplateKey2";
   data2.name = "fakeTemplateName2";
@@ -94,8 +92,6 @@ const createTemplates = async (repo) => {
   data2.pixelTemplate = "pixelTemplate2";
   data2.trafficSource = "trafficSource2";
   data2.appendParameters = "appendParameters2";
-
-  await repo.save(data2);
 
   const data3 = new Template();
   data3.key = "fakeTemplateKey3";
@@ -106,5 +102,5 @@ const createTemplates = async (repo) => {
   data3.trafficSource = "trafficSource3";
   data3.appendParameters = "appendParameters3";
 
-  const template = await repo.save(data3);
+  Promise.all([repo.save(data1), repo.save(data2), repo.save(data3)])
 }
