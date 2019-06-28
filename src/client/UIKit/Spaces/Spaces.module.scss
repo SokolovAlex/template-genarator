@@ -1,0 +1,37 @@
+$space_XXXL: 96px;
+$space_XXL: 64px;
+$space_XL: 48px;
+$space_L: 32px;
+$space_M: 24px;
+$space_S: 16px;
+$space_XS: 12px;
+$space_XXS: 8px;
+$space_XXXS: 4px;
+
+.width96 {
+    width: $space_XXXL;
+}
+.width64 {
+    width: $space_XXL;
+}
+.width48 {
+    width: $space_XL;
+}
+.width32 {
+    width: $space_L;
+}
+.width24 {
+    width: $space_M;
+}
+.width16 {
+    width: $space_S;
+}
+.width12 {
+    width: $space_XS;
+}
+.width8 {
+    width: $space_XXS;
+}
+.width4 {
+    width: $space_XXXS;
+}

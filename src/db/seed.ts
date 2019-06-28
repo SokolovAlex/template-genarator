@@ -33,12 +33,12 @@ import { User } from './entity/user';
   const newValue1 = new ParameterValue();
   newValue1.key = 'key1';
   newValue1.name = 'name1';
-  newValue1.added_user = user;
+  newValue1.addedUser = user;
 
   const newValue2 = new ParameterValue();
   newValue2.key = 'key2';
   newValue2.name = 'name2';
-  newValue2.added_user = user;
+  newValue2.addedUser = user;
 
   const value1 = await paramValueRepo.save(newValue1);
   await paramValueRepo.save(newValue2);
@@ -46,10 +46,10 @@ import { User } from './entity/user';
   const newParam = new Parameter();
   newParam.key = 'fake';
   newParam.name = 'fake';
-  newParam.omniture_name = 'fake';
-  newParam.user_supplied = 'fake';
-  newParam.input_type = InputType.Checkbox;
-  newParam.default_value = value1;
+  newParam.omnitureName = 'fake';
+  newParam.userSupplied = 'fake';
+  newParam.inputType = InputType.Checkbox;
+  newParam.defaultValue = value1;
 
   const param = await paramRepo.save(newParam);
 

@@ -16,7 +16,7 @@ export class BaseRoute {
     return this;
   }
 
-  public render(req: Request, res: Response, view: string, options?: Object) {
+  public render(req: Request, res: Response, view: string, options?: object) {
     res.locals.BASE_URL = '/';
 
     res.locals.scripts = this.scripts;

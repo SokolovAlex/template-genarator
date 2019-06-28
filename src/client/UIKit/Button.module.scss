@@ -1,0 +1,285 @@
+@import '../styles/variables';
+@import '../styles/mixins/shadows';
+
+.button {
+  position: relative;
+  border-radius: 3px;
+  text-transform: uppercase;
+  height: 1px;
+  min-height: 40px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  cursor: pointer;
+  border-style: solid;
+  border-width: 1px;
+  outline: none;
+  font-size: 14px;
+  svg {
+    transition: fill 150ms ease-in-out;
+    width: auto;
+  }
+}
+
+.content,
+.container {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  transition: opacity 50ms ease-in-out;
+  > * + * {
+    margin-left: 12px;
+  }
+}
+
+.containerHidden {
+  opacity: 0;
+}
+
+.buttonWSmall {
+  min-width: 120px;
+  padding: 0 12px;
+}
+
+.buttonHDefault {
+  min-height: 40px;
+}
+
+.buttonHSmall {
+  min-height: 30px;
+}
+
+.buttonWAdaptive {
+  width: 100%;
+}
+
+.buttonWDefault {
+  padding: 0 12px;
+}
+
+.buttonTPrimaryRed,
+.buttonTPrimaryGreen {
+  transition: border-color 150ms ease-in-out, background-color 150ms ease-in-out;
+  color: white;
+  &:hover {
+    color: white;
+  }
+  &:focus {
+    color: white;
+  }
+  svg {
+    fill: white;
+  }
+}
+
+.buttonBold {
+  font-weight: 600;
+}
+
+.buttonTPrimaryRed {
+  background-color: $uikitRed;
+  border-color: $uikitRed;
+  &:hover {
+    background-color: $uikitDarkRed;
+    border-color: $uikitDarkRed;
+  }
+  &:focus {
+    background-color: $uikitDarkerRed;
+    border-color: $uikitDarkerRed;
+  }
+}
+
+.buttonWithshadow {
+  @include level1;
+}
+.buttonTPrimaryGreen {
+  background-color: $uikitGreen;
+  border-color: $uikitGreen;
+  &:hover {
+    background-color: $uikitDarkGreen;
+    border-color: $uikitDarkGreen;
+  }
+  &:active {
+    background-color: $uikitDarkerGreen;
+    border-color: $uikitDarkerGreen;
+  }
+}
+
+.buttonTPrimaryGreen.buttonLoading {
+  background-color: $uikitLightGreen;
+  border-color: $uikitLightGreen;
+  &:hover,
+  &:focus,
+  &:hover:focus {
+    background-color: $uikitLightGreen;
+    border-color: $uikitLightGreen;
+  }
+}
+
+.buttonTPrimaryRed.buttonLoading {
+  background-color: $uikitLightRed;
+  border-color: $uikitLightRed;
+  &:hover,
+  &:focus,
+  &:hover:focus {
+    background-color: $uikitLightRed;
+    border-color: $uikitLightRed;
+  }
+}
+
+.buttonTPrimaryRed.buttonDisabled,
+.buttonTPrimaryGreen.buttonDisabled {
+  background-color: $uikitGray6;
+  border-color: $uikitGray6;
+  &:focus,
+  &:hover,
+  &:focus:hover {
+    background: $uikitGray6;
+    border-color: $uikitGray6;
+  }
+}
+
+.buttonTLinkGreen {
+  transition: color 150ms ease-in-out, border-color 150ms ease-in-out;
+  background: transparent;
+  border: none;
+  svg {
+    fill: $uikitGreen;
+  }
+  &:hover {
+    svg {
+      fill: $uikitDarkGreen;
+    }
+  }
+  &:active {
+    svg {
+      fill: $uikitDarkerGreen;
+    }
+  }
+}
+
+.buttonTOutlineGreen,
+.buttonTOutlineGray,
+.buttonTOutlineGrayTextGreen {
+  transition: color 150ms ease-in-out, border-color 150ms ease-in-out;
+  background-color: white;
+  svg {
+    fill: $uikitGreen;
+  }
+  &:hover {
+    svg {
+      fill: $uikitDarkGreen;
+    }
+  }
+  &:active {
+    svg {
+      fill: $uikitDarkerGreen;
+    }
+  }
+}
+
+.buttonTOutlineGreen {
+  border-color: $uikitGreen;
+  &:hover {
+    border-color: $uikitDarkGreen;
+  }
+  &:active {
+    border-color: $uikitDarkerGreen;
+  }
+}
+
+.buttonTOutlineGrayTextGreen,
+.buttonTOutlineGreen {
+  color: $uikitGreen;
+  &:hover {
+    color: $uikitDarkGreen;
+  }
+  &:focus {
+    color: $uikitDarkerGreen;
+  }
+}
+
+.buttonTOutlineGray {
+  color: $uikitGray4;
+  &:hover {
+    color: $uikitText;
+  }
+  &:focus {
+    color: $uikitGray;
+  }
+}
+
+.buttonTOutlineGrayTextGreen,
+.buttonTOutlineGray {
+  border-color: $uikitGray7;
+  &:hover {
+    border-color: $uikitGray5;
+  }
+  &:focus {
+    border-color: $uikitGray3;
+  }
+}
+
+.buttonTOutlineGray.buttonLoading,
+.buttonTOutlineGreen.buttonLoading,
+.buttonTOutlineGrayTextGreen.buttonLoading {
+  border-color: $uikitGray7;
+  svg {
+    fill: $uikitGreen;
+  }
+  &:focus,
+  &:hover,
+  &:focus:hover {
+    border-color: $uikitGray7;
+    svg {
+      fill: $uikitGreen;
+    }
+  }
+}
+
+.buttonTOutlineGray.buttonDisabled,
+.buttonTOutlineGreen.buttonDisabled {
+  color: $uikitGray6;
+  border-color: $uikitGray8;
+  svg {
+    fill: $uikitGray6;
+  }
+  &:focus,
+  &:hover,
+  &:focus:hover {
+    border-color: $uikitGray8;
+    color: $uikitGray6;
+    svg {
+      fill: $uikitGray6;
+    }
+  }
+}
+
+.loader {
+  position: absolute;
+  display: flex;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 50ms ease-in-out;
+}
+
+.loaderShown {
+  opacity: 1;
+}
+
+.buttonDisabled,
+.buttonLoading {
+  cursor: default;
+}
+
+.icon {
+  display: inline-flex;
+  min-width: 16px;
+}

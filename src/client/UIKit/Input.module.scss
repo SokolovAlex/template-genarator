@@ -1,0 +1,85 @@
+@import 'variables';
+
+.input {
+  height: 37px;
+  padding: 11px 12px;
+  line-height: 16px;
+  &WithClear {
+    padding-right: 32px;
+  }
+
+  &WithIcon {
+    padding-left: 32px;
+  }
+
+  &WithNumberSpan {
+    padding-right: 30px;
+  }
+  // Clearing inbuilt number input arrows
+  &:hover,
+  &:focus {
+    -moz-appearance: textfield;
+  }
+
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+}
+
+.clearButton {
+  position: absolute;
+  right: 12px;
+  top: 11px;
+  cursor: pointer;
+  svg {
+    fill: $uikitGray4;
+  }
+}
+
+.icon {
+  position: absolute;
+  left: 12px;
+  top: 11px;
+  svg {
+    fill: $uikitExtra1;
+  }
+}
+
+.iconDisabled {
+  svg {
+    fill: $uikitExtra2;
+  }
+}
+
+.numberSpan {
+  user-select: none;
+  position: absolute;
+  right: 12px;
+  top: 1px;
+  bottom: 2px;
+  width: 10px;
+}
+
+.numberArrow {
+  height: 50%;
+  cursor: pointer;
+  &Inc {
+    padding-top: 6px;
+  }
+  &Dec {
+    padding-top: 2px;
+  }
+  > svg {
+    display: block;
+    //height: 12px;
+    fill: $uikitGray5;
+    transition: fill 150ms ease-in-out;
+  }
+  &:hover > svg {
+    fill: $uikitText;
+  }
+}

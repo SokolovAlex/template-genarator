@@ -1,0 +1,9 @@
+.textarea {
+  padding: 12px;
+  resize: vertical;
+  min-height: 4.5rem;
+  &Disabled {
+    resize: none;
+    overflow: hidden;
+  }
+}

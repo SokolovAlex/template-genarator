@@ -1,0 +1,86 @@
+@import "variables";
+
+.fakeBorder {
+    border-bottom-width: 2px;
+    border-color: $uikitBorder;
+    border-style: solid;
+    transition: border-color 150ms ease-in-out;
+}
+
+.element {
+    width: 100%;
+    font-size: 14px;
+    font-weight: 300;
+    &::-ms-clear {
+        display: none;
+    }
+
+    &::placeholder { 
+        color: $uikitGray5;
+    }
+
+    background-color: white;
+    color: $uikitText;
+    outline: none;
+    border-style:solid;
+    border-top-width: 1px;
+    border-bottom-width: 0px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-color: $uikitBorder;
+    transition: border-color 150ms ease-in-out;
+    &:hover {
+        border-color:$uikitGray6;
+        + .fakeBorder {
+            border-bottom-color: $uikitDarkBorder;
+        }
+    }
+    &:focus, &Selected  {
+        border-bottom-color: $uikitGreen;
+        + .fakeBorder {
+            border-bottom-color: $uikitGreen;
+        }
+        &:hover   { 
+            border-bottom-color: $uikitGreen;
+            + .fakeBorder {
+                border-bottom-color: $uikitGreen;
+            }
+        }
+    }
+    &Selected {
+        border-color:$uikitGray6;
+    } 
+    &HasError {
+        border-color: red;
+        + .fakeBorder {
+            border-color: red;
+        }
+        &:hover, &:focus, &:focus:hover {
+            border-color: red;
+            + .fakeBorder {
+                border-color: red;
+            }
+        }
+    }
+    &Disabled {
+        border-color: $uikitBorder;
+        color: $uikitGray5;
+
+        + .fakeBorder {
+            border-color: $uikitBorder; 
+        }
+        &:hover, &:focus {
+            color: $uikitGray5;
+            border-color: $uikitBorder; 
+            + .fakeBorder {
+                border-color: $uikitBorder; 
+            }
+        }
+        background-color: $uikitGray8;
+    }
+}
+
+.container {
+    font-size: 0;
+    position: relative;
+}

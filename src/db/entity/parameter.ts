@@ -20,17 +20,17 @@ export class Parameter {
     type: 'varchar',
     default: InputType.Select,
   })
-  public input_type: InputType;
+  public inputType: InputType;
 
   @Column()
-  public user_supplied: string;
+  public userSupplied: string;
 
   @Column()
-  public omniture_name: string;
+  public omnitureName: string;
 
   @OneToOne((type) => ParameterValue)
   @JoinColumn()
-  public default_value: ParameterValue;
+  public defaultValue: ParameterValue;
 
   @OneToMany(() => ParameterValue, (value) => value.parameter)
   public values: ParameterValue[];

@@ -11,7 +11,7 @@ export class ParameterValue {
   public name: string;
 
   @ManyToOne(() => User, (user) => user.parameterValues)
-  public added_user: User;
+  public addedUser: User;
 
   @ManyToOne(() => Parameter, (parameter) => parameter.values)
   public parameter: Parameter;

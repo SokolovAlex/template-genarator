@@ -1,0 +1,263 @@
+@import '../../styles/variables/';
+@import '../../styles/mixins/shadows';
+@import '../../styles/mixins/container';
+
+$padding: 64px;
+
+.block {
+  display: flex;
+  flex-direction: column;
+  padding-top: $padding;
+}
+.blockWithGrayBackground {
+  background: $uikitGray8;
+}
+.rowBackdrop {
+  background: $uikitGray8;
+  width: 100%;
+  padding-bottom: $padding/2;
+}
+
+.rowContainer {
+  border-left: 1px solid $uikitGray7;
+  border-right: 1px solid $uikitGray7;
+  border-bottom: 1px solid $uikitGray7;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  @include container;
+  @include level1;
+}
+.blockWithGrayBackground .rowContainer {
+  margin-bottom: $padding/2;
+}
+
+.header {
+  @include level1;
+  @include container;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  border-left: 1px solid $uikitGray7;
+  border-right: 1px solid $uikitGray7;
+  border-top: 1px solid $uikitGray7;
+  display: flex;
+  flex-direction: column;
+  @media #{$tablet} {
+    flex-direction: row;
+  }
+  align-content: center;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  align-items: stretch;
+  border-top: 1px solid $uikitGray7;
+  background: white;
+}
+
+.cell,
+.headerCell,
+.lastRowCell {
+  justify-content: space-between;
+  display: none;
+  padding: 10px 20px;
+  align-content: center;
+  flex-grow: 2;
+  position: relative;
+  @media #{$tablet} {
+    display: flex;
+  }
+}
+
+.cell {
+  font-weight: 500;
+  flex-direction: column;
+  align-items: start;
+
+  & + & {
+    border-left: 1px solid $uikitGray7;
+  }
+  @media #{$tablet} {
+    align-items: stretch;
+    justify-content: center;
+    text-align: center;
+  }
+  @media #{$mobileOnly} {
+    width: 50% !important;
+  }
+}
+
+.headerCell,
+.lastRowCell {
+  font-weight: bolder;
+  font-size: 18px;
+  align-items: center;
+  @media #{$tablet} {
+    & + & {
+      border-top: 0px solid $uikitGray7;
+      border-left: 1px solid $uikitGray7;
+    }
+  }
+  @media #{$mobileOnly} {
+    width: 100% !important;
+  }
+}
+
+.headerCell {
+  background-color: $uikitGray8;
+  & + & {
+    border-top: 1px solid $uikitGray7;
+  }
+  padding: 32px 16px;
+  @media #{$tablet} {
+    & + & {
+      border-top: 0px solid $uikitGray7;
+      border-left: 1px solid $uikitGray7;
+    }
+  }
+}
+
+.cellIsSelected,
+.headerCellIsSelected,
+.lastRowCellIsSelected {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.headerCellIsLabel {
+  display: flex;
+  font-weight: 500;
+  padding: 24px 16px;
+
+  @media #{$tablet} {
+    .headerContent {
+      text-align: left;
+      font-size: 21px;
+      line-height: 28px;
+      font-weight: 300;
+    }
+  }
+}
+
+.cellIsLabel {
+  display: flex;
+  font-weight: 300;
+  text-align: left;
+}
+
+.headerContent {
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+  flex-grow: 2;
+  min-width: 100%;
+  font-weight: 700;
+}
+
+.arrows {
+  background-color: $uikitGray8;
+  display: flex;
+  flex-direction: row;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: 16px;
+  @media #{$tablet} {
+    display: none;
+  }
+}
+
+.arrow {
+  width: 50%;
+
+  @media #{$tablet} {
+    display: none;
+  }
+}
+
+.highlight {
+  position: absolute;
+  top: 0;
+  display: flex;
+  justify-content: center;
+
+  left: 2px;
+  right: 2px;
+  @media #{$tablet} {
+    top: auto;
+    bottom: calc(100% + 1px);
+  }
+
+  & + * {
+    margin-top: 16px;
+    @media #{$tablet} {
+      margin-top: 0px;
+    }
+  }
+}
+
+.highlightContent {
+  background: $uikitRed;
+  text-transform: uppercase;
+  font-size: 14px;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  text-align: center;
+  color: white;
+  padding: 4px 24px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media #{$tablet} {
+    padding: 8px 24px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    width: 100%;
+  }
+}
+
+.arrowContent {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  font-size: 12px;
+  width: 100%;
+  font-weight: 300;
+  color: $uikitGray5;
+  fill: $uikitGray5;
+  transition: color 150ms ease-in-out, fill 150ms ease-in-out;
+  &:hover {
+    color: $uikitGray3;
+    fill: $uikitGray3;
+  }
+  align-items: center;
+}
+
+.nextText {
+  width: 100%;
+  text-align: right;
+}
+
+.arrowIcon {
+  min-width: 24px;
+  margin-top: -5px;
+}
+
+.note {
+  padding-bottom: $padding;
+  font-size: 12px;
+  color: #999;
+  line-height: 1.4;
+  font-weight: 300;
+  @include container;
+}
+
+.noteContainer {
+  background-color: $uikitGray8;
+}

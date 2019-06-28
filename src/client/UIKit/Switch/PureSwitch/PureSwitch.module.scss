@@ -1,0 +1,91 @@
+@import '../../../styles/variables/';
+
+$duration: 250ms;
+
+.block {
+  position: relative;
+  border-radius: 30px;
+  display: flex;
+}
+
+.slider {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  position: relative;
+  background-color: $uikitGray5;
+  border-radius: 30px;
+  height: 100%;
+  transition: background-color $duration/2 ease-in-out $duration/2;
+}
+
+.active {
+  background-color: $uikitGreen;
+}
+
+.checkbox {
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  z-index: 3;
+}
+
+
+.switchMoved {
+  transform: translate3d(125%, 0, 0);
+}
+
+.switch {
+  position: absolute;
+  background: $uikitGray8;
+
+  border-radius: 30px;
+  transition: all $duration ease-in-out;
+}
+
+.container {
+  position: relative;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.middleSwitch {
+  top: 2px;
+  left: 2px;
+  width: calc(50% - 4px);
+  height: calc(100% - 4px);
+}
+
+.middleContainer {
+  width: 40px;
+  height: 20px;
+}
+
+.smallSwitch {
+  top: 2px;
+  left: 2px;
+  width: calc(50% - 4px);
+  height: calc(100% - 4px);
+}
+
+.smallContainer {
+  width: 32px;
+  height: 16px;
+}
+
+.bigSwitch {
+  top: 3.2px;
+  left: 3.2px;
+  width: calc(50% - 6.4px);
+  height: calc(100% - 6.4px);
+}
+
+.bigContainer {
+  width: 64px;
+  height: 32px;
+}
