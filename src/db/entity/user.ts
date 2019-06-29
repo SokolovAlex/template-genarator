@@ -13,6 +13,6 @@ export class User {
   @OneToMany(() => Log, (log) => log.user)
   public logs: Log[];
 
-  @OneToMany(() => ParameterValue, (value) => value.added_user)
+  @OneToMany(() => ParameterValue, (value) => value.addedUser)
   public parameterValues: ParameterValue[];
 }

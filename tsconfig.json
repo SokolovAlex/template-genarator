@@ -6,6 +6,12 @@
     "emitDecoratorMetadata": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
+    "jsx": "react",
+    "lib": ["es6", "dom"],
+    "sourceMap": true,
+    // "noImplicitReturns": true,
+    // "noImplicitThis": true,
+    // "noImplicitAny": true,
   },
   "include": [
     "src/**/*.ts"
