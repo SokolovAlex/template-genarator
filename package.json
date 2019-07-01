@@ -9,7 +9,7 @@
     "seed": "ts-node ./src/db/seed.ts",
     "server": "ts-node ./src/server/app.ts",
     "dev:server": "ts-node-dev --respawn --transpileOnly ./src/server/app.ts",
-    "build": "webpack --config ./src/client/webpack.config.js",
+    "build": "webpack --config ./src/client/webpack.config.ts",
     "dev": "",
     "lint": "tslint -c tslint.json 'src/**/*.ts' --fix"
   },

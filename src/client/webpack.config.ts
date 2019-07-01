@@ -1,10 +1,10 @@
-const { join } = require('path');
-const webpack = require('webpack');
-const HtmlWebPackPlugin = require('html-webpack-plugin');
+import HtmlWebPackPlugin from 'html-webpack-plugin';
+import { join } from 'path';
+import webpack from 'webpack';
 
 const buildFolder = join(__dirname, '../../public');
 
-module.exports = {
+export default {
   entry: {
     app: join(__dirname, 'app.tsx'),
     vendor: ['react', 'react-dom'],
@@ -14,11 +14,12 @@ module.exports = {
     filename: '[name].bundle.js',
   },
   mode: 'development',
+  devtool: 'eval-source-map',
   module: {
     rules: [
       {
         test: /\.(ts|tsx)$/,
-        loader: 'ts-loader'
+        loader: 'ts-loader',
       },
       {
         test: /\.less$/,

@@ -1,23 +1,23 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "module": "es2015",
+    "module": "commonjs",
 		"moduleResolution": "node",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "jsx": "react",
-		"lib": [
-			"dom",
-			"es2017"
-		],
+    "lib": [
+      "dom",
+      "es2017"
+    ],
     "sourceMap": true,
     // "noImplicitReturns": true,
     // "noImplicitThis": true,
     // "noImplicitAny": true,
 
-		"allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true
   },
   "include": [
     "src/**/*.ts"
