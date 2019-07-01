@@ -1,14 +1,10 @@
-import { join } from 'path';
-import webpack from 'webpack';
-import HtmlWebPackPlugin from'html-webpack-plugin';
-
-// const { join } = require('path');
-// const webpack = require('webpack');
-// const HtmlWebPackPlugin = require('html-webpack-plugin');
+const { join } = require('path');
+const webpack = require('webpack');
+const HtmlWebPackPlugin = require('html-webpack-plugin');
 
 const buildFolder = join(__dirname, '../../public');
 
-export default {
+module.exports = {
   entry: {
     app: join(__dirname, 'app.tsx'),
     vendor: ['react', 'react-dom'],
@@ -17,7 +13,7 @@ export default {
     path: buildFolder,
     filename: '[name].bundle.js',
   },
-  mode: 'production',
+  mode: 'development',
   module: {
     rules: [
       {

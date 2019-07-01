@@ -5,8 +5,8 @@ import path from 'path';
 import webpack from 'webpack';
 import webpackMiddleware from 'webpack-dev-middleware';
 
-import { initDb } from '../db';
 import webpackConfig from '../client/webpack.config';
+import { initDb } from '../db';
 import { PagesRoute, TemplateRoute } from './routes';
 
 const compiler = webpack(webpackConfig);
@@ -36,11 +36,10 @@ class Server {
 
     this.app.use(router);
 
-    
     this.app.use(webpackMiddleware(compiler, {
         noInfo: true,
         publicPath: undefined,
-        stats: { colors: true }
+        stats: { colors: true },
     }));
     this.app.use(webpackMiddleware(compiler));
   }

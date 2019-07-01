@@ -1,4 +1,4 @@
-import { SET_PARTNERS_LOADING_STATE, FETCH_PARTNERS_SUCCESS, SWITCH_LIST_VIEW } from './actions';
+import { FETCH_PARTNERS_SUCCESS, SET_PARTNERS_LOADING_STATE, SWITCH_LIST_VIEW } from './actions';
 
 export default (state = { view: 'list', partners: undefined }, action) => {
   switch (action.type) {

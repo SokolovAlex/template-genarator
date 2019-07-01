@@ -1,10 +1,10 @@
-import { createStore, compose, applyMiddleware } from 'redux';
-import { createBrowserHistory } from 'history'
-import { routerMiddleware } from 'connected-react-router'
+import { routerMiddleware } from 'connected-react-router';
+import { createBrowserHistory } from 'history';
+import { applyMiddleware, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import createRootReducer from './reducers';
 
-export const history = createBrowserHistory()
+export const history = createBrowserHistory();
 
 export default function configureStore(initialState = null) {
 
@@ -14,7 +14,7 @@ export default function configureStore(initialState = null) {
         routerMiddleware(history),
       ),
     ));
-  
+
   if (module.hot) {
     module.hot.accept();
   }
