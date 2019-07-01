@@ -6,8 +6,7 @@ import createRootReducer from './reducers';
 
 export const history = createBrowserHistory();
 
-export default function configureStore(initialState = null) {
-
+export default function configureStore(initialState = {}) {
   const store = createStore(createRootReducer(history), initialState,
     composeWithDevTools(
       applyMiddleware(
