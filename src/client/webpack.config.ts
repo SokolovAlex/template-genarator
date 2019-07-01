@@ -2,7 +2,7 @@ import HtmlWebPackPlugin from 'html-webpack-plugin';
 import { join } from 'path';
 import webpack from 'webpack';
 
-const buildFolder = join(__dirname, '../../public');
+export const buildFolder = join(__dirname, '../../public');
 
 export default {
   entry: {

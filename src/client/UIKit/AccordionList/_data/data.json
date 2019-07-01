@@ -1,0 +1,35 @@
+{
+  "header": "Foire Aux Questions",
+  "class": "move-up",
+  "accordionItems": [
+    {
+      "title": "Comment Kaspersky Lab sécurise mes mots de passe et mes données personnelles ?\t",
+      "content": "<p xmlns=\"http://www.w3.org/1999/xhtml\">Kaspersky Password Manager chiffre les données à l'aide d'un algorithme reposant sur une clé symétrique, basée sur la norme de chiffrement AES (Advanced Encryption Standard). Cet algorithme AES est utilisé dans le monde entier pour protéger les données hautement confidentielles. Dans ce cadre, vous recevez une clé, utilisée pour accéder à votre coffre-fort à mots de passe et générée à partir de votre mot de passe principal grâce à Password-Based Key Derivation Function 2 (PBKDF2).</p>"
+    },
+    {
+      "title": "Mes données sont-elles partagées avec Kaspersky Lab ?\t",
+      "content": "<p xmlns=\"http://www.w3.org/1999/xhtml\">Non. Ni Kaspersky Lab (en tant que développeur de l'application), ni personne d'autre ne peut accéder à vos données. Vos données n'appartiennent qu'à vous et ne sont accessibles que par vous. Cet aspect de votre protection des mots de passe ne changera jamais. Nous respectons totalement la vie privée des utilisateurs.</p>"
+    },
+    {
+      "title": "Comment puis-je synchroniser mes appareils avec Kaspersky Password Manager ?\t",
+      "content": "<p xmlns=\"http://www.w3.org/1999/xhtml\">Lorsque vous ajoutez des données à votre gestionnaire de mots de passe sur un appareil, l'application envoie automatiquement ces données dans le Cloud, qui sont ensuite transférées immédiatement vers vos autres appareils sur lesquels Kaspersky Password Manager est installé et qui sont connectés à votre compte My Kaspersky. N'oubliez pas : la mise à jour de vos informations sur tous vos appareils nous permet de restaurer vos données en cas de remplacement ou perte d'un appareil. En outre, la synchronisation automatique est définie par défaut dans votre logiciel de gestion des mots de passe, pour rendre le stockage de vos mots de passe fluide.</p>"
+    },
+    {
+      "title": "Que se passe-t-il si je perds mon mot de passe principal ?\t",
+      "content": "<p xmlns=\"http://www.w3.org/1999/xhtml\">Pour votre propre sécurité, Kaspersky Lab ne stocke pas votre mot de passe principal sur vos appareils ou dans le Cloud. Nous vous recommandons de mémoriser votre mot de passe principal ou de le noter et de le conserver en sécurité, car il ne peut pas être récupéré en cas d'oubli. Il n'y a aucun moyen d'accéder à votre coffre de mots de passe ni à vos données sans le mot de passe principal. Si vous le perdez, vous perdrez également l'accès à toutes vos données.</p>"
+    },
+    {
+      "title": "Qu'est-ce que la fonctionnalité de recherche automatique dans les Images ?",
+      "content": "<p xmlns=\"http://www.w3.org/1999/xhtml\">Dans la toute nouvelle version de Kaspersky Password Manager, vous pouvez scanner vos appareils à la recherche d'images de documents personnels (carte d'identité, passeport, carte bancaire...). Notre technologie détecte la présence de texte sur les images en analysant des caractéristiques spécifiques de lignes. La technologie fonctionne de manière locale sur vos appareils et ne peut pas lire le contenu de vos documents. Au cours de cette recherche, si notre technologie détecte une image qui semble être une photo ou une numérisation d'un document, vous êtes invité(e) à l'enregistrer dans votre coffre-fort chiffré et à supprimer la copie non chiffrée.</p><p xmlns=\"http://www.w3.org/1999/xhtml\">Les images des documents stockés dans Kaspersky Password Manager ne sont pas téléchargées sur le Kaspersky Security Network et sont disponibles uniquement pour vous de manière locale sur vos appareils ou sur votre compte My Kaspersky.</p>"
+    },
+    {
+      "title": "Les solutions de gestion des mots de passe souhaitent stocker mes données dans un seul endroit. Est-ce que cela représente un risque ?\t",
+      "content": "<p xmlns=\"http://www.w3.org/1999/xhtml\">Kaspersky Password Manager est un gestionnaire de mots de passe sécurisé et une solution de protection par mot de passe qui vous permet de créer des mots de passe forts et uniques pour tous vos comptes en ligne. Le meilleur ? Vous n'avez qu'un mot de passe principal à retenir pour accéder à tous les autres. Les solutions de gestion des mots de passe les plus sécurisées, comme Kaspersky Password Manager, proposent des fonctionnalités de chiffrement performantes qui rendent vos données illisibles par des tiers.</p>"
+    },
+    {
+      "title": "Quelle est la différence entre les versions gratuite et Premium de Kaspersky Password Manager ?\t",
+      "content": "<p xmlns=\"http://www.w3.org/1999/xhtml\">La version gratuite de Kaspersky Password Manager propose les mêmes fonctionnalités que la version Premium, mais elle ne vous permet de stocker que 15 entrées au maximum. Cela représente un total maximum de 15 mots de passe et documents confidentiels, comme votre passeport, votre permis de conduire et vos cartes bancaires. Vous ne disposez donc que d'un stockage de mots de passe limité et d'un stockage limité également pour vos données personnelles. Pour profiter d'un espace de stockage illimité, vous devez passer à la version Premium.</p>"
+    }
+  ],
+  "id": "490876"
+}
