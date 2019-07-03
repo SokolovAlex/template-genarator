@@ -6,7 +6,7 @@ export class PagesRoute extends BaseRoute {
   public static create(router: Router) {
     console.info('[PagesRoute::create] Creating index route.');
 
-    router.get('/', (req: Request, res: Response, next: NextFunction) => {
+    router.get(['/import', '/creation', '/'], (req: Request, res: Response, next: NextFunction) => {
       new PagesRoute().index(req, res, next);
     });
   }
@@ -17,13 +17,6 @@ export class PagesRoute extends BaseRoute {
 
   public index(req: Request, res: Response, next: NextFunction) {
     console.info('index route.');
-
-    this.title = 'Home | Tour of Heros';
-
-    const options: object = {
-      message: 'Welcome to the Tour of Heros',
-    };
-
-    this.render(req, res, 'index', options);
+    this.render(req, res, 'index');
   }
 }

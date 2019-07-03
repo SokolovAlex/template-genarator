@@ -20,7 +20,7 @@
     "allowSyntheticDefaultImports": true
   },
   "include": [
-    "src/**/*.ts", "src/client/containers/Template.tsx"
+    "src/**/*.ts",
   ],
   "exclude": [
     "node_modules"

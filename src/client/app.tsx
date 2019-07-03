@@ -1,22 +1,20 @@
 import { ConnectedRouter } from 'connected-react-router';
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
 import { Route, Switch } from 'react-router';
 
-import createStore, { history } from './store/createStore';
+import { history } from './store/createStore';
+import Layout from './containers/Layout/Layout';
 import Creation from './containers/Creation/Creation';
 
-const store = createStore();
-
-ReactDOM.render(
-  <Provider store={store}>
-    <ConnectedRouter history={history}>
+const App: React.FC = () => (
+  <ConnectedRouter history={history}>
+    <Layout>
       <Switch>
-        <Route exact={true} path='/' render={() => <Creation/>} />
-        <Route render={() => (<div>Miss</div>)} />
+        <Route exact={true} path='/import' render={() => <div>Import</div>} />
+        <Route render={() => <Creation/>} />
       </Switch>
-    </ConnectedRouter>
-  </Provider>,
-  document.getElementById('root'),
+    </Layout>
+  </ConnectedRouter>
 );
+
+export default App;

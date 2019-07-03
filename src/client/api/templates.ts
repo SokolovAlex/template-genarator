@@ -4,15 +4,14 @@ import { Template } from './../../db/entity/template';
 const apiUrl = '/api/templates';
 const conflictUrl = `${apiUrl}/conflicts`;
 
-export const getTemplates = (): Promise<Template[]> => {
-  return axios.get(apiUrl).then((response) => {
-    const template: Template[] = response.data;
-    return template;
-  });
+export const getTemplates = async (): Promise<Template[]> => {
+  const response = await axios.get(apiUrl);
+  return response.data;
 };
 
-export const checkTemplates = (templates: Template[]): Promise<Template[]> => {
-  return axios.get(conflictUrl, {
-    params: templates.map(template => template.key)
-  }).then((response) => response.data);
+export const checkTemplates = async (template: Template): Promise<Template[]> => {
+  const response = await axios.get(conflictUrl, {
+    params: template.key,
+  });
+  return response.data;
 };

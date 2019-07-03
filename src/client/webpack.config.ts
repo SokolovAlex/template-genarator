@@ -1,12 +1,13 @@
 import HtmlWebPackPlugin from 'html-webpack-plugin';
 import { join } from 'path';
+import CopyPlugin from 'copy-webpack-plugin';
 import webpack from 'webpack';
 
 export const buildFolder = join(__dirname, '../../public');
 
 export default {
   entry: {
-    app: join(__dirname, 'app.tsx'),
+    app: join(__dirname, 'index.tsx'),
     vendor: ['react', 'react-dom'],
   },
   output: {
@@ -22,6 +23,11 @@ export default {
         loader: 'ts-loader',
       },
       {
+        test: /\.svg$/,
+        exclude: /node_modules/,
+        loader: 'svg-react-loader',
+      },
+      {
         test: /\.less$/,
         exclude: /node_modules/,
         use: [
@@ -29,9 +35,13 @@ export default {
             loader: 'style-loader',
           },
           {
-            loader: 'css-loader',
+            loader: 'typings-for-css-modules-loader',
             options: {
               modules: true,
+              camelCase: true,
+              namedExport: true,
+              onlyLocals: true,
+              localIdentName: '[folder][name]__[local]--[emoji:3]',
             },
           },
           {
@@ -51,5 +61,8 @@ export default {
       template: join(__dirname, 'index.html'),
       filename: join(buildFolder, 'index.html'),
     }),
+    new CopyPlugin([
+      { from: join(__dirname, './favicon.png'), to: buildFolder },
+    ]),
   ],
 };
