@@ -62,6 +62,7 @@
     "typescript": "3.4.5",
     "typings": "^2.1.1",
     "typings-for-css-modules-loader": "1.7.0",
+    "underscore": "1.9.1",
     "url-loader": "2.0.1",
     "webpack": "^4.35.0",
     "webpack-dev-middleware": "^3.7.0"

@@ -1,5 +1,6 @@
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Parameter } from './parameter';
+import { ParameterValue } from './parameterValue';
 import { Template } from './template';
 
 @Entity()
@@ -15,4 +16,7 @@ export class Template2Parameter {
 
   @ManyToOne(() => Parameter, (param) => param.templates2params)
   public parameter: Parameter;
+
+  @ManyToOne(() => ParameterValue, (paramValue) => paramValue.predefinedFor)
+  public predefinedValue: ParameterValue;
 }

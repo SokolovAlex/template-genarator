@@ -53,54 +53,78 @@ import { User } from './entity/user';
 
   const param = await paramRepo.save(newParam);
 
-  const newTemplate = new Template();
-  newTemplate.key = 'fakeTemplateKey';
-  newTemplate.name = 'fakeTemplateName';
-  newTemplate.active = true;
-  newTemplate.description = 'description';
-  newTemplate.pixelTemplate = 'pixelTemplate';
-  newTemplate.trafficSource = 'trafficSource';
-  newTemplate.appendParameters = 'appendParameters';
-
-  const template = await templateRepo.save(newTemplate);
+  const [ googleTemplate, yandexTemplate ] = await createTemplates(templateRepo);
 
   const newT2p = new Template2Parameter();
   newT2p.order = 1;
-  newT2p.template = template;
+  newT2p.template = googleTemplate;
   newT2p.parameter = param;
 
   t2pRepo.save(newT2p);
 
-  createTemplates(templateRepo);
+  const newT2p2 = new Template2Parameter();
+  newT2p2.order = 1;
+  newT2p2.template = yandexTemplate;
+  newT2p2.parameter = param;
+
+  t2pRepo.save(newT2p2);
 })();
 
 const createTemplates = async (repo) => {
   const data1 = new Template();
-  data1.key = 'fakeTemplateKey1';
-  data1.name = 'fakeTemplateName1';
+  data1.key = 'GoogleAdWords';
+  data1.name = 'Google AdWords';
   data1.active = true;
-  data1.description = 'description1';
-  data1.pixelTemplate = 'pixelTemplate1';
-  data1.trafficSource = 'trafficSource1';
-  data1.appendParameters = 'appendParameters1';
+  data1.description = 'Only for direct integrations with Google AdWords. If you use Kenshoo, use that setup instead.';
+  data1.pixelTemplate = 'GoogleAdWords';
+  data1.trafficSource = 'Paid Search';
+  data1.appendParameters = 'GoogleAdWords';
 
   const data2 = new Template();
-  data2.key = 'fakeTemplateKey2';
-  data2.name = 'fakeTemplateName2';
+  data2.key = 'YandexDirect';
+  data2.name = 'Yandex Direct';
   data2.active = true;
-  data2.description = 'description2';
-  data2.pixelTemplate = 'pixelTemplate2';
-  data2.trafficSource = 'trafficSource2';
-  data2.appendParameters = 'appendParameters2';
+  data2.description = 'Only for direct integrations with Yandex Direct. If you use Kenshoo, use that setup instead.';
+  data2.pixelTemplate = 'YandexDirect';
+  data2.trafficSource = 'Paid Search';
+  data2.appendParameters = 'YandexDirect';
 
   const data3 = new Template();
-  data3.key = 'fakeTemplateKey3';
-  data3.name = 'fakeTemplateName3';
+  data3.key = 'Kenshoo';
+  data3.name = 'Kenshoo';
   data3.active = true;
-  data3.description = 'description3';
-  data3.pixelTemplate = 'pixelTemplate3';
-  data3.trafficSource = 'trafficSource3';
-  data3.appendParameters = 'appendParameters3';
+  data3.description = 'For all links comming from paid search which are integrated with kenshoo.com.';
+  data3.pixelTemplate = 'Kenshoo';
+  data3.trafficSource = 'Paid Search';
+  data3.appendParameters = 'Kenshoo';
 
-  Promise.all([repo.save(data1), repo.save(data2), repo.save(data3)]);
+  const data4 = new Template();
+  data4.key = 'NativeIPMs';
+  data4.name = 'Native IPMs';
+  data4.active = true;
+  data4.description = 'This is a hint for users explaining what is this option for.';
+  data4.pixelTemplate = 'pixelTemplate3';
+  data4.trafficSource = 'IPM';
+  data4.appendParameters = 'appendParameters3';
+
+  const data5 = new Template();
+  data5.key = 'AdobeCampaign';
+  data5.name = 'Adobe Campaign';
+  data5.active = true;
+  data5.description = 'This is a hint for users explaining what is this option for.';
+  data5.pixelTemplate = 'AdobeCampaign';
+  data5.trafficSource = 'IPM';
+  data5.appendParameters = 'AdobeCampaign';
+
+  const data6 = new Template();
+  data6.key = 'GoogleDoubleClickManager';
+  data6.name = 'Google DoubleClick Manager';
+  data6.active = true;
+  data6.description = 'This is a hint for users explaining what is this option for.';
+  data6.pixelTemplate = 'GoogleDoubleClickManager';
+  data6.trafficSource = 'Display';
+  data6.appendParameters = 'GoogleDoubleClickManager';
+
+  return Promise.all([repo.save(data1), repo.save(data2), repo.save(data3),
+    repo.save(data4), repo.save(data5), repo.save(data6)]);
 };

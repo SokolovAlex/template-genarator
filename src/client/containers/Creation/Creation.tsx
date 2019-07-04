@@ -2,22 +2,91 @@ import React from 'react';
 import { getTemplates } from './../../api/templates';
 import { Template } from '../../../db/entity/template';
 import Title from './../../UIKit/Title/Title';
-import TemplateCheckbox from './../../components/TemplateCheckBox/TemplateCheckBox';
+import { TrafficInfo, TemplateInfo } from '../../models/traffic';
+import Traffic from './../../components/Traffic/Traffic';
+
+interface ITraffic {
+  traffics: TrafficInfo[];
+  templateInfoMap: ITemplateInfoMap;
+}
+
+interface ITemplateInfoMap {
+  [key: string]: TemplateInfo;
+}
+
+const createTemplateInfo = (templates: Template[]): ITemplateInfoMap => {
+  return templates.reduce((memo, template) => {
+    const templateInfo = new TemplateInfo();
+    templateInfo.template = template;
+    templateInfo.selected = false;
+    templateInfo.disabled = false;
+    templateInfo.disabledWith = [];
+    memo[template.key] = templateInfo;
+    return memo;
+  }, {});
+};
+
+const createTrafficData = (templates: Template[]): ITraffic => {
+  const templateInfo = createTemplateInfo(templates);
+  const traffics = groupByTraffic(templates);
+  return {
+    traffics,
+    templateInfoMap: templateInfo,
+  };
+};
+
+const groupByTraffic = (templates: Template[]): TrafficInfo[] => {
+  const trafficsHash = templates.reduce((memo, template) => {
+    if (!memo[template.trafficSource]) {
+      memo[template.trafficSource] = [template];
+    } else {
+      memo[template.trafficSource].push(template);
+    }
+    return memo;
+  }, {});
+
+  return Object.keys(trafficsHash).map((key) => {
+    const info = new TrafficInfo();
+    info.title = key;
+    info.templates = trafficsHash[key];
+    return info;
+  });
+};
 
 const Creation: React.FC = () => {
-  const [templates, setTemplate ] = React.useState<Template[]>([]);
+  const [trafficData, setTraffic] = React.useState<ITraffic>({ traffics: [], templateInfoMap: {});
+  const {traffics, templateInfoMap} = trafficData;
+
   React.useEffect(() => {
-    getTemplates().then((newTemplate) => {
-      setTemplate(newTemplate);
+    getTemplates().then((newTemplates) => {
+      const newTrafficInfo = createTrafficData(newTemplates);
+      setTraffic(newTrafficInfo);
     });
   }, []);
 
+  const onValueChange = (checked: boolean, template: Template) => {
+    const { key } = template;
+    const newTemplateInfoMap ={...templateInfoMap };
+    newTemplateInfoMap[key] = { ...templateInfoMap[key], selected: checked }
+    setTraffic({
+      ...trafficData,
+      templateInfoMap: newTemplateInfoMap
+    });
+  };
+
   return (
     <div>
-      <Title>Tracking Code generator</Title>
-      {
-      templates.map((template) => <TemplateCheckbox key={template.key} template={template}/>)
-    }</div>
+      <Title>Tracking Code Generator</Title>
+      {traffics &&
+        traffics.map((traffic) => (
+          <Traffic
+            key={traffic.title}
+            onValueChange={onValueChange}
+            traffic={traffic}
+            templateInfo={templateInfoMap}
+          />
+        ))}
+    </div>
   );
 };
 
