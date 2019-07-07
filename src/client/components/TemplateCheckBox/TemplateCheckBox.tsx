@@ -1,23 +1,27 @@
 import React from 'react';
 import { Template } from './../../../db/entity/template';
 import Checkbox from './../../UIKit/Checkbox/Checkbox';
+import templateContext from '../../containers/Creation/template-context';
+import { StyledTemplate, TemplateDescription } from './styled';
 
 interface ITemplateCheckboxProps {
   template: Template;
-  checked?: boolean;
-  disabled?: boolean;
   onValueChange: (checked: boolean, template: Template) => void;
 }
 
-const TemplateCheckbox = ({ template, onValueChange, checked }: ITemplateCheckboxProps) => {
+const TemplateCheckbox = ({ template, onValueChange }: ITemplateCheckboxProps) => {
+  const templateInfoMap = React.useContext(templateContext);
   const onValueChangeHandler = (cheked: boolean) => {
     onValueChange(cheked, template);
   };
+
+  const { selected, disabled } = templateInfoMap[template.key];
+
   return (
-    <div>
-      <Checkbox checked={checked} onValueChange={onValueChangeHandler} label={template.name}/>
-      <div>{template.description}</div>
-    </div>
+    <StyledTemplate>
+      <Checkbox checked={selected} disabled={disabled} onValueChange={onValueChangeHandler} label={template.name}/>
+      <TemplateDescription>{template.description}</TemplateDescription>
+    </StyledTemplate>
   );
 };
 

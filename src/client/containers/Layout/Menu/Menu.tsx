@@ -23,7 +23,7 @@ const Menu = ({ activeMenu }: IMenuProps) => (
   <MenuContainer>
     <MenuInner className='menu-inner'>
       { menuItems.map((item) => (
-        <MenuItem key={item.title} to={item.link} active={activeMenu === item.link}>
+        <MenuItem key={item.title} to={item.link} active={activeMenu === item.link ? 1 : 0}>
           <MenuText>{item.title}</MenuText>
         </MenuItem>
         ))

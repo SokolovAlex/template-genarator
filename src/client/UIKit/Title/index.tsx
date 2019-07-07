@@ -20,3 +20,9 @@ export const Title = styled.h2`
     background: #009981;
   }
 `;
+
+export const TitleH3 = styled.h3`
+  height: 30px;
+  color: #444;
+  font-size: 24px;
+`;

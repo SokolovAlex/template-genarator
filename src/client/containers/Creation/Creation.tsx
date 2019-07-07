@@ -1,9 +1,11 @@
 import React from 'react';
-import { getTemplates } from './../../api/templates';
+import { getTemplates, checkTemplate } from './../../api/templates';
 import { Template } from '../../../db/entity/template';
-import Title from './../../UIKit/Title/Title';
+import { Title } from './../../UIKit/Title';
 import { TrafficInfo, TemplateInfo } from '../../models/traffic';
+import TemplateContext from './template-context';
 import Traffic from './../../components/Traffic/Traffic';
+import { Container } from '../../components/styled';
 
 interface ITraffic {
   traffics: TrafficInfo[];
@@ -54,7 +56,7 @@ const groupByTraffic = (templates: Template[]): TrafficInfo[] => {
 };
 
 const Creation: React.FC = () => {
-  const [trafficData, setTraffic] = React.useState<ITraffic>({ traffics: [], templateInfoMap: {});
+  const [trafficData, setTraffic] = React.useState<ITraffic>({ traffics: [], templateInfoMap: {}});
   const {traffics, templateInfoMap} = trafficData;
 
   React.useEffect(() => {
@@ -67,26 +69,34 @@ const Creation: React.FC = () => {
   const onValueChange = (checked: boolean, template: Template) => {
     const { key } = template;
     const newTemplateInfoMap ={...templateInfoMap };
-    newTemplateInfoMap[key] = { ...templateInfoMap[key], selected: checked }
+    newTemplateInfoMap[key] = { ...templateInfoMap[key], selected: checked };
     setTraffic({
       ...trafficData,
       templateInfoMap: newTemplateInfoMap
     });
+    checkTemplate(template).then((data) => {
+      
+      console.log(data);
+      
+    });
   };
 
   return (
-    <div>
-      <Title>Tracking Code Generator</Title>
-      {traffics &&
-        traffics.map((traffic) => (
-          <Traffic
-            key={traffic.title}
-            onValueChange={onValueChange}
-            traffic={traffic}
-            templateInfo={templateInfoMap}
-          />
-        ))}
-    </div>
+    <TemplateContext.Provider value={templateInfoMap}>
+      <div>
+        <Title>Tracking Code Generator</Title>
+        <Container>
+          {traffics &&
+            traffics.map((traffic) => (
+              <Traffic
+                key={traffic.title}
+                onValueChange={onValueChange}
+                traffic={traffic}
+              />
+            ))}
+        </Container>
+      </div>
+    </TemplateContext.Provider>
   );
 };
 

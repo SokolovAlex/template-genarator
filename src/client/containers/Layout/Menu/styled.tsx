@@ -22,7 +22,7 @@ export const MenuInner = styled.div`
 `;
 
 interface IMenuItemProps {
-  active?: boolean;
+  active?: number;
 }
 
 export const MenuItem = styled(Link)<IMenuItemProps>`
