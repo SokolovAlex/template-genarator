@@ -14,21 +14,28 @@ const Root = styled.label`
   display: inline-block;
   &:hover {
     > span:first-child {
-      box-shadow: ${`0 0 0 2px ${Colors.Green}`}
+      box-shadow: ${`0 0 0 1px ${Colors.Green}`}
     }
   }
 `;
 
-const Label = styled.span`
-  color: ${Colors.Grey};
-  :hover {
-    color: ${Colors.Green};
+interface ILabelWrapper {
+  disabled?: boolean;
+}
+
+const Label = styled.span<ILabelWrapper>`
+  color: ${(props) => props.disabled ? Colors.Grey1 : Colors.Grey};
+  ${(props) => !props.disabled ?
+    `:hover {
+      color: ${Colors.Green};
+    }` : ''
   }
 `;
 
 interface ICheckWrapper {
   checked?: boolean;
   round?: boolean;
+  disabled?: boolean;
 }
 
 const CheckWrapper = styled('span')<ICheckWrapper>`
@@ -37,7 +44,7 @@ const CheckWrapper = styled('span')<ICheckWrapper>`
   display: inline-block;
   width: ${size};
   height: ${size};
-  border: 1px solid ${Colors.Green};
+  border: 1px solid ${(props) => props.disabled ? Colors.Grey1 : Colors.Green};
   border-radius: ${(props) => (props.round ? '50%' : '2px')};
   background-color: ${Colors.White};
   transition: 'all 120ms ease-out';
@@ -64,7 +71,7 @@ const IconWrapper = styled('div')<IIconWrapperProps>`
   transform: ${({ checked }) => (checked ? 'scale(1)' : 'scale(0)')};
   pointer-events: none;
   transition: all 120ms ease-out;
-  color: ${Colors.Green};
+  color: ${(props) => props.disabled ? Colors.Grey1 : Colors.Green};
 `;
 
 export interface ICheckboxProps {
@@ -115,13 +122,14 @@ export class Checkbox extends React.Component<ICheckboxProps> {
       >
         <CheckWrapper
           checked={this.props.checked}
+          disabled={disabled}
           round={round}
         >
           <IconWrapper checked={this.props.checked}>
             {round || icon || <CheckIcon />}
           </IconWrapper>
         </CheckWrapper>
-        <Label>
+        <Label disabled={disabled}>
           <Input
             type='checkbox'
             disabled={disabled}

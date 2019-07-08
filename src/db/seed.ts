@@ -6,6 +6,7 @@ import { ParameterValue } from './entity/parameterValue';
 import { Template } from './entity/template';
 import { Template2Parameter } from './entity/template2Parameter';
 import { User } from './entity/user';
+import console = require('console');
 
 (async () => {
   const connection = await createConnection();
@@ -41,19 +42,29 @@ import { User } from './entity/user';
   newValue2.addedUser = user;
 
   const value1 = await paramValueRepo.save(newValue1);
-  await paramValueRepo.save(newValue2);
+  const value2 = await paramValueRepo.save(newValue2);
 
   const newParam = new Parameter();
-  newParam.key = 'fake';
-  newParam.name = 'fake';
-  newParam.omnitureName = 'fake';
-  newParam.userSupplied = 'fake';
+  newParam.key = 'Checkbox';
+  newParam.name = 'Checkbox';
+  newParam.omnitureName = 'Checkbox';
+  newParam.userSupplied = 'Checkbox';
   newParam.inputType = InputType.Checkbox;
   newParam.defaultValue = value1;
 
   const param = await paramRepo.save(newParam);
 
-  const [ googleTemplate, yandexTemplate ] = await createTemplates(templateRepo);
+  const newParam2 = new Parameter();
+  newParam2.key = 'Radio';
+  newParam2.name = 'Radio';
+  newParam2.omnitureName = 'Radio';
+  newParam2.userSupplied = 'Radio';
+  newParam2.inputType = InputType.Radio;
+  newParam2.defaultValue = value2;
+
+  const param2 = await paramRepo.save(newParam2);
+
+  const [ googleTemplate, yandexTemplate, KenshooTemplate ] = await createTemplates(templateRepo);
 
   const newT2p = new Template2Parameter();
   newT2p.order = 1;
@@ -63,11 +74,39 @@ import { User } from './entity/user';
   t2pRepo.save(newT2p);
 
   const newT2p2 = new Template2Parameter();
-  newT2p2.order = 1;
   newT2p2.template = yandexTemplate;
   newT2p2.parameter = param;
+  newT2p2.predefinedValue = value1;
 
   t2pRepo.save(newT2p2);
+
+  const newT2p3 = new Template2Parameter();
+  newT2p3.template = googleTemplate;
+  newT2p3.parameter = param2;
+  newT2p3.order = 2;
+
+  t2pRepo.save(newT2p3);
+
+  const newT2p4 = new Template2Parameter();
+  newT2p4.template = KenshooTemplate;
+  newT2p4.parameter = param2;
+  newT2p4.predefinedValue = value2;
+
+  t2pRepo.save(newT2p4);
+
+  const newT2p5 = new Template2Parameter();
+  newT2p5.template = yandexTemplate;
+  newT2p5.parameter = param2;
+  newT2p5.order = 2;
+
+  t2pRepo.save(newT2p5);
+
+  const newT2p6 = new Template2Parameter();
+  newT2p6.template = KenshooTemplate;
+  newT2p6.parameter = param;
+  newT2p6.order = 2;
+
+  t2pRepo.save(newT2p6);
 })();
 
 const createTemplates = async (repo) => {

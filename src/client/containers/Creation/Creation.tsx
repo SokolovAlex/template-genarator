@@ -68,17 +68,36 @@ const Creation: React.FC = () => {
 
   const onValueChange = (checked: boolean, template: Template) => {
     const { key } = template;
-    const newTemplateInfoMap ={...templateInfoMap };
-    newTemplateInfoMap[key] = { ...templateInfoMap[key], selected: checked };
-    setTraffic({
-      ...trafficData,
-      templateInfoMap: newTemplateInfoMap
-    });
-    checkTemplate(template).then((data) => {
-      
-      console.log(data);
-      
-    });
+    const newTemplateInfoMap = {...templateInfoMap };
+
+    if (checked) {
+      checkTemplate(template).then((data: any) => {
+        newTemplateInfoMap[key] = {
+          ...templateInfoMap[key],
+          selected: true,
+          disabledWith: data.disabledTemplateKeys,
+        };
+        data.disabledTemplateKeys.forEach((disabledKey) => {
+          newTemplateInfoMap[disabledKey].disabled = true;
+        });
+        setTraffic({
+          ...trafficData,
+          templateInfoMap: newTemplateInfoMap,
+        });
+      });
+    } else {
+      newTemplateInfoMap[key].disabledWith.forEach((disabledKey) => {
+        newTemplateInfoMap[disabledKey].disabled = false;
+      });
+      newTemplateInfoMap[key] = {
+        ...templateInfoMap[key],
+        selected: false,
+      };
+      setTraffic({
+        ...trafficData,
+        templateInfoMap: newTemplateInfoMap,
+      });
+    }
   };
 
   return (

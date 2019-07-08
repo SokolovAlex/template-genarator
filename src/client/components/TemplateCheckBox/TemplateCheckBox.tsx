@@ -14,9 +14,7 @@ const TemplateCheckbox = ({ template, onValueChange }: ITemplateCheckboxProps) =
   const onValueChangeHandler = (cheked: boolean) => {
     onValueChange(cheked, template);
   };
-
   const { selected, disabled } = templateInfoMap[template.key];
-
   return (
     <StyledTemplate>
       <Checkbox checked={selected} disabled={disabled} onValueChange={onValueChangeHandler} label={template.name}/>

@@ -8,8 +8,8 @@ export class Template2Parameter {
   @PrimaryGeneratedColumn()
   public id: number;
 
-  @Column()
-  public order: number;
+  @Column({ nullable: true })
+  public order?: number;
 
   @ManyToOne(() => Template, (template) => template.templates2params)
   public template: Template;

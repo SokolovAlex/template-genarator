@@ -9,7 +9,7 @@ export const getTemplates = async (): Promise<Template[]> => {
   return response.data;
 };
 
-export const checkTemplate = async (template: Template): Promise<Template[]> => {
+export const checkTemplate = async (template: Template): Promise<any> => {
   const response = await axios.get(conflictUrl, {
     params: { templateKey: template.key },
   });
