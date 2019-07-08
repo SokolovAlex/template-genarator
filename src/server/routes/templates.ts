@@ -46,11 +46,11 @@ export class TemplateRoute {
     });
 
     router.get('/api/templates/parameters', async (req: Request, res: Response, next: NextFunction) => {
-      const templateId = req.body.templateId;
-      const template: Template = await templateRepo.findOne(templateId, {
+      const { templateKey } = req.query;
+      const template: Template = await templateRepo.findOne(templateKey, {
         relations: ['templates2params', 'templates2params.parameter'],
       });
-      res.json(template);
+      res.json(template.templates2params.map((t2p) => t2p.parameter));
     });
   }
 }

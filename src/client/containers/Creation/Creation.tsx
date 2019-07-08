@@ -1,11 +1,12 @@
 import React from 'react';
-import { getTemplates, checkTemplate } from './../../api/templates';
+import { getTemplates, checkTemplate, getParameters } from './../../api/templates';
 import { Template } from '../../../db/entity/template';
-import { Title } from './../../UIKit/Title';
+import { Title, TitleH2 } from './../../UIKit/Title';
 import { TrafficInfo, TemplateInfo } from '../../models/traffic';
 import TemplateContext from './template-context';
 import Traffic from './../../components/Traffic/Traffic';
-import { Container } from '../../components/styled';
+import { Container, GridContainer } from '../../components/styled';
+import { Parameter } from '../../../db/entity/parameter';
 
 interface ITraffic {
   traffics: TrafficInfo[];
@@ -56,6 +57,7 @@ const groupByTraffic = (templates: Template[]): TrafficInfo[] => {
 };
 
 const Creation: React.FC = () => {
+  const [parameters, setParameters] = React.useState<Parameter[]>([]);
   const [trafficData, setTraffic] = React.useState<ITraffic>({ traffics: [], templateInfoMap: {}});
   const {traffics, templateInfoMap} = trafficData;
 
@@ -69,8 +71,12 @@ const Creation: React.FC = () => {
   const onValueChange = (checked: boolean, template: Template) => {
     const { key } = template;
     const newTemplateInfoMap = {...templateInfoMap };
-
     if (checked) {
+
+      getParameters(template).then((parameters: any) => {
+        setParameters(parameters);
+      });
+
       checkTemplate(template).then((data: any) => {
         newTemplateInfoMap[key] = {
           ...templateInfoMap[key],
@@ -104,7 +110,7 @@ const Creation: React.FC = () => {
     <TemplateContext.Provider value={templateInfoMap}>
       <div>
         <Title>Tracking Code Generator</Title>
-        <Container>
+        <GridContainer>
           {traffics &&
             traffics.map((traffic) => (
               <Traffic
@@ -113,6 +119,18 @@ const Creation: React.FC = () => {
                 traffic={traffic}
               />
             ))}
+        </GridContainer>
+        <Container>
+          { parameters.length !== 0 &&
+            <>
+              <TitleH2>Parameters</TitleH2>
+              {
+                parameters.map((param) => (
+                  <div key={param.key}>{param.name}</div>
+                ))
+              }
+            </>
+          }
         </Container>
       </div>
     </TemplateContext.Provider>
