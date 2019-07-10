@@ -41,8 +41,20 @@ import console = require('console');
   newValue2.name = 'name2';
   newValue2.addedUser = user;
 
+  const newValue3 = new ParameterValue();
+  newValue3.key = 'key3';
+  newValue3.name = 'name3';
+  newValue3.addedUser = user;
+
+  const newValue4 = new ParameterValue();
+  newValue4.key = 'key4';
+  newValue4.name = 'name4';
+  newValue4.addedUser = user;
+
   const value1 = await paramValueRepo.save(newValue1);
   const value2 = await paramValueRepo.save(newValue2);
+  const value3 = await paramValueRepo.save(newValue3);
+  const value4 = await paramValueRepo.save(newValue4);
 
   const newParam = new Parameter();
   newParam.key = 'Checkbox';
@@ -64,7 +76,27 @@ import console = require('console');
 
   const param2 = await paramRepo.save(newParam2);
 
-  const [ googleTemplate, yandexTemplate, KenshooTemplate ] = await createTemplates(templateRepo);
+  const newParam3 = new Parameter();
+  newParam3.key = 'Select1';
+  newParam3.name = 'Select1';
+  newParam3.omnitureName = 'Select1';
+  newParam3.userSupplied = 'Select1';
+  newParam3.inputType = InputType.Select;
+  newParam3.defaultValue = value3;
+
+  const param3 = await paramRepo.save(newParam3);
+
+  const newParam4 = new Parameter();
+  newParam4.key = 'Select2';
+  newParam4.name = 'Select2';
+  newParam4.omnitureName = 'Select3';
+  newParam4.userSupplied = 'Select4';
+  newParam4.inputType = InputType.Select;
+  newParam4.defaultValue = value4;
+
+  const param4 = await paramRepo.save(newParam4);
+
+  const [ googleTemplate, yandexTemplate, kenshooTemplate, IBMTemplate, adobeTemplate ] = await createTemplates(templateRepo);
 
   const newT2p = new Template2Parameter();
   newT2p.order = 1;
@@ -88,7 +120,7 @@ import console = require('console');
   t2pRepo.save(newT2p3);
 
   const newT2p4 = new Template2Parameter();
-  newT2p4.template = KenshooTemplate;
+  newT2p4.template = kenshooTemplate;
   newT2p4.parameter = param2;
   newT2p4.predefinedValue = value2;
 
@@ -102,12 +134,30 @@ import console = require('console');
   t2pRepo.save(newT2p5);
 
   const newT2p6 = new Template2Parameter();
-  newT2p6.template = KenshooTemplate;
+  newT2p6.template = kenshooTemplate;
   newT2p6.parameter = param;
   newT2p6.order = 2;
 
   t2pRepo.save(newT2p6);
+
+  const newT2p7 = new Template2Parameter();
+  newT2p7.template = adobeTemplate;
+  newT2p7.parameter = param3;
+  newT2p7.predefinedValue = value4;
+
+  t2pRepo.save(newT2p7);
+
+  const newT2p8 = new Template2Parameter();
+  newT2p8.template = IBMTemplate;
+  newT2p8.parameter = param4;
+  newT2p8.predefinedValue = value3;
+
+  t2pRepo.save(newT2p8);
 })();
+
+const linkValueWithParams = () => {
+
+}
 
 const createTemplates = async (repo) => {
   const data1 = new Template();

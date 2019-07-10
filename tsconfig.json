@@ -20,7 +20,7 @@
     "allowSyntheticDefaultImports": true
   },
   "include": [
-    "src/**/*.ts",
+    "src/**/*.ts", "src/client/components/Parameter/CheckboxParameter.tsx", "src/client/components/Parameter/RadioParameter.tsx",
   ],
   "exclude": [
     "node_modules"

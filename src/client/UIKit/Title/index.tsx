@@ -24,11 +24,11 @@ export const Title = styled.h1`
 export const TitleH2 = styled.h2`
   height: 30px;
   color: #444;
+  position: relative;
   font-size: 24px;
   text-align: center;
   padding-bottom: 5px;
   margin-bottom: 10px;
-
 
   ::after {
     content: "";
@@ -45,5 +45,5 @@ export const TitleH2 = styled.h2`
 export const TitleH3 = styled.h3`
   height: 30px;
   color: #444;
-  font-size: 24px;
+  font-size: 20px;
 `;

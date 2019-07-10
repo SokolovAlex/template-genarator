@@ -50,7 +50,7 @@ export class TemplateRoute {
       const template: Template = await templateRepo.findOne(templateKey, {
         relations: ['templates2params', 'templates2params.parameter'],
       });
-      res.json(template.templates2params.map((t2p) => t2p.parameter));
+      res.json(template);
     });
   }
 }
