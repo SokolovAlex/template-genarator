@@ -53,7 +53,7 @@ export class TemplateRoute {
           'templates2params',
           'templates2params.parameter',
           'templates2params.parameter.values',
-          'templates2params.parameter.predefinedValue',
+          'templates2params.parameter.defaultValue',
         ],
       });
       res.json(template);
