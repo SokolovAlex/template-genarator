@@ -63,6 +63,7 @@ import console = require('console');
   newParam.userSupplied = 'Checkbox';
   newParam.inputType = InputType.Checkbox;
   newParam.defaultValue = value1;
+  newParam.values = [value1, value2, value3];
 
   const param = await paramRepo.save(newParam);
 
@@ -73,6 +74,7 @@ import console = require('console');
   newParam2.userSupplied = 'Radio';
   newParam2.inputType = InputType.Radio;
   newParam2.defaultValue = value2;
+  newParam.values = [value2, value3];
 
   const param2 = await paramRepo.save(newParam2);
 
@@ -83,6 +85,7 @@ import console = require('console');
   newParam3.userSupplied = 'Select1';
   newParam3.inputType = InputType.Select;
   newParam3.defaultValue = value3;
+  newParam.values = [value2, value3, value1];
 
   const param3 = await paramRepo.save(newParam3);
 
@@ -93,6 +96,7 @@ import console = require('console');
   newParam4.userSupplied = 'Select4';
   newParam4.inputType = InputType.Select;
   newParam4.defaultValue = value4;
+  newParam.values = [value2, value3, value4];
 
   const param4 = await paramRepo.save(newParam4);
 

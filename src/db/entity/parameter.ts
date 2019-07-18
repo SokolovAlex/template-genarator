@@ -1,4 +1,4 @@
-import { Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, OneToMany, PrimaryColumn } from 'typeorm';
 import { ParameterValue } from './parameterValue';
 import { Template2Parameter } from './template2Parameter';
 
@@ -28,10 +28,9 @@ export class Parameter {
   @Column()
   public omnitureName: string;
 
-  @OneToOne((type) => ParameterValue)
-  @JoinColumn()
+  @ManyToOne(() => ParameterValue, (value) => value.defaultFor)
   public defaultValue: ParameterValue;
-
+s
   @OneToMany(() => ParameterValue, (value) => value.parameter)
   public values: ParameterValue[];
 

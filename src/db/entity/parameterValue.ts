@@ -11,6 +11,9 @@ export class ParameterValue {
   @Column()
   public name: string;
 
+  @OneToMany(() => Parameter, (parameter) => parameter.defaultValue)
+  public defaultFor: Parameter[];
+
   @ManyToOne(() => User, (user) => user.parameterValues)
   public addedUser: User;
 

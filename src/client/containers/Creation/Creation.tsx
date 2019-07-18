@@ -2,11 +2,11 @@ import React from 'react';
 import { getTemplates, checkTemplateConflicts, getParameters } from './../../api/templates';
 import { Template } from '../../../db/entity/template';
 import { Title, TitleH2, TitleH3 } from './../../UIKit/Title';
+import { Formik } from 'formik';
 import { TrafficInfo, TemplateInfo } from '../../models/traffic';
 import TemplateContext from './template-context';
 import Traffic from './../../components/Traffic/Traffic';
 import { Container, GridContainer } from '../../components/styled';
-import { Parameter } from '../../../db/entity/parameter';
 import ParameterBlock from '../../components/Parameter/Parameter';
 
 interface ITraffic {
@@ -74,7 +74,7 @@ const Creation: React.FC = () => {
     const newTemplateInfoMap = {...templateInfoMap };
 
     getParameters(template).then((template: any) => {
-      const newSelectedTemplates = [ template, ...selectedTemplates ]
+      const newSelectedTemplates = [ template, ...selectedTemplates ];
       setSelectedTemplates(newSelectedTemplates);
     });
 
@@ -139,10 +139,12 @@ const Creation: React.FC = () => {
           { selectedTemplates.length !== 0 &&
             <>
               <TitleH2>Parameters</TitleH2>
+              {/* <Formik initialValues={{}} onSubmit={() => {}}> */}
               {
                 selectedTemplates.map((template) => (
                   <React.Fragment key={template.key}>
                     <TitleH3>For "{template.name}" template</TitleH3>
+
                     {
                       template.templates2params.map((t2p) => (
                         <ParameterBlock
@@ -152,8 +154,9 @@ const Creation: React.FC = () => {
                       ))
                     }
                   </React.Fragment>
-                ))
-              }
+                )
+                )}
+              {/* </Formik> */}
             </>
           }
         </Container>

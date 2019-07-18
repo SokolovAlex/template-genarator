@@ -1,6 +1,5 @@
 import React from 'react';
 import { Parameter, InputType } from '../../../db/entity/parameter';
-import { ParameterValue } from '../../../db/entity/parameterValue';
 import CheckboxParameter from './CheckboxParameter';
 import RadioParameter from './RadioParameter';
 import SelectParameter from './SelectParameter';

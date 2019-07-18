@@ -2,6 +2,7 @@ import { NextFunction, Request, Response, Router } from 'express';
 import { uniq } from 'underscore';
 import { getConnection } from '../../db';
 import { Template } from '../../db/entity/template';
+import console = require('console');
 
 export class TemplateRoute {
   public static async create(router: Router) {
@@ -48,7 +49,12 @@ export class TemplateRoute {
     router.get('/api/templates/parameters', async (req: Request, res: Response, next: NextFunction) => {
       const { templateKey } = req.query;
       const template: Template = await templateRepo.findOne(templateKey, {
-        relations: ['templates2params', 'templates2params.parameter'],
+        relations: [
+          'templates2params',
+          'templates2params.parameter',
+          'templates2params.parameter.values',
+          'templates2params.parameter.predefinedValue',
+        ],
       });
       res.json(template);
     });

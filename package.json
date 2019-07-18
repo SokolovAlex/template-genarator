@@ -33,6 +33,7 @@
     "express": "4.17.0",
     "express-es6-template-engine": "^2.1.9",
     "express-hbs": "^2.1.2",
+    "formik": "^1.5.8",
     "history": "4.9.0",
     "html-webpack-plugin": "^3.2.0",
     "less": "3.9.0",
