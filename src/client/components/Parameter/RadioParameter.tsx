@@ -11,7 +11,7 @@ const RadioParameter = ({ parameter }: IParameterProps) => {
       <RadioGroup name={parameter.key} selectedValue={value} onChange={(val) => setValue(val.toString())}>
         {
           parameter.values.map((value) => (
-            <Radio label={value.name} value={value.name} />
+            <Radio key={value.key} label={value.name} value={value.name} />
           ))
         }
       </RadioGroup>

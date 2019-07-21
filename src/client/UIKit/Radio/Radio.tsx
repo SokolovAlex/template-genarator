@@ -21,7 +21,7 @@ const Root = styled('label')<RootProps>`
   :hover {
     input {
       box-shadow: 0 0 0 2px rgba(14, 134, 254, 0.2);
-      border-color: ${Colors.Grey};
+      border-color: ${Colors.Green};
     }
   }
 `;
@@ -33,8 +33,8 @@ const Input = styled.input`
   position: relative;
   box-sizing: content-box;
   margin: -2px 0 0 0;
-  width: 12px;
-  height: 12px;
+  width: 15px;
+  height: 15px;
   border: 1px solid ${Colors.Green};
   border-radius: 50%;
   background-color: ${Colors.Green};
@@ -55,9 +55,9 @@ const Input = styled.input`
   &:after {
     content: '';
     position: absolute;
-    width: 8px;
-    height: 8px;
-    top: 2px;
+    width: 10px;
+    height: 10px;
+    top: 3px;
     left: 2px;
     border-radius: 50%;
     background: transparent;

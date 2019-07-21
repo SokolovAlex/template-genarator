@@ -63,7 +63,7 @@ import console = require('console');
   newParam.userSupplied = 'Checkbox';
   newParam.inputType = InputType.Checkbox;
   newParam.defaultValue = value1;
-  newParam.values = [value1, value2, value3];
+  newParam.values = [value1, value2];
 
   const param = await paramRepo.save(newParam);
 
@@ -74,7 +74,7 @@ import console = require('console');
   newParam2.userSupplied = 'Radio';
   newParam2.inputType = InputType.Radio;
   newParam2.defaultValue = value2;
-  newParam2.values = [value2, value3];
+  newParam2.values = [value1, value3, value4];
 
   const param2 = await paramRepo.save(newParam2);
 
@@ -85,7 +85,7 @@ import console = require('console');
   newParam3.userSupplied = 'Select1';
   newParam3.inputType = InputType.Select;
   newParam3.defaultValue = value3;
-  newParam3.values = [value2, value3, value1];
+  newParam3.values = [ ];
 
   const param3 = await paramRepo.save(newParam3);
 
@@ -158,10 +158,6 @@ import console = require('console');
 
   t2pRepo.save(newT2p8);
 })();
-
-const linkValueWithParams = () => {
-
-}
 
 const createTemplates = async (repo) => {
   const data1 = new Template();

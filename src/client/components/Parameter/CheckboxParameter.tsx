@@ -1,12 +1,19 @@
 import React from 'react';
-import { Parameter } from '../../../db/entity/parameter';
 import { IParameterProps } from './Parameter';
 import Checkbox from './../../UIKit/Checkbox/Checkbox';
 
 const CheckboxParameter = ({ parameter }: IParameterProps) => {
+  console.log('CheckboxParameter', parameter);
+  debugger;
   return (
     <div>
-      <Checkbox checked={true} label={parameter.name}/>
+      <label>{ parameter.name }</label>
+      {
+        parameter.values.map((value) => (
+          <Checkbox key={value.key} checked={true} label={value.name}/>
+        ))
+      }
+      
     </div>
   )
 };
