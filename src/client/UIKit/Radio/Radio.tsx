@@ -7,17 +7,14 @@ interface RootProps {
   disabled?: boolean;
 }
 
-const Root = styled('label')<RootProps>`
+const Root = styled('div')<RootProps>`
   display: inline-block;
   vertical-align: middle;
   position: relative;
   margin: 0 5px 10px 0;
   word-break: break-word;
   color: ${Colors.Grey};
-  line-height: 1.3333rem;
-  font-size: 1rem;
   cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
-  pointer-events: ${props => (props.disabled ? 'none' : 'auto')};
   :hover {
     input {
       box-shadow: 0 0 0 2px rgba(14, 134, 254, 0.2);
@@ -33,8 +30,8 @@ const Input = styled.input`
   position: relative;
   box-sizing: content-box;
   margin: -2px 0 0 0;
-  width: 15px;
-  height: 15px;
+  width: 18px;
+  height: 18px;
   border: 1px solid ${Colors.Green};
   border-radius: 50%;
   background-color: ${Colors.Green};
@@ -55,14 +52,13 @@ const Input = styled.input`
   &:after {
     content: '';
     position: absolute;
-    width: 10px;
-    height: 10px;
+    width: 12px;
+    height: 12px;
     top: 3px;
-    left: 2px;
+    left: 3px;
     border-radius: 50%;
     background: transparent;
     opacity: 0;
-    pointer-events: none;
     transform: scale(0);
     transition: 'all 120ms ease-out';
   }

@@ -6,12 +6,13 @@
   "author": "Alexey Sokolov <alexey.sokolov2@kaspersky.com>",
   "license": "MIT",
   "scripts": {
-    "seed": "ts-node ./src/db/seed.ts",
+    "seed": "yarn clean && ts-node ./src/db/seed.ts",
     "server": "ts-node ./src/server/server.ts",
     "dev:server": "ts-node-dev --respawn --transpileOnly ./src/server/app.ts",
     "build": "webpack --config ./src/client/webpack.config.ts",
     "dev": "",
-    "lint": "tslint -c tslint.json 'src/**/*.ts' --fix"
+    "lint": "tslint -c tslint.json 'src/**/*.ts' --fix",
+    "clean": "rm db.sqlite"
   },
   "dependencies": {
     "@types/history": "4.7.2",

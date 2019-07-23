@@ -7,7 +7,7 @@ const RadioParameter = ({ parameter }: IParameterProps) => {
   const [value, setValue] = React.useState(parameter.defaultValue.name);
   return (
     <div>
-      <label>{ parameter.name }</label>
+      <div>{ parameter.name }</div>
       <RadioGroup name={parameter.key} selectedValue={value} onChange={(val) => setValue(val.toString())}>
         {
           parameter.values.map((value) => (

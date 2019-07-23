@@ -3,14 +3,21 @@ import { IParameterProps } from './Parameter';
 import Checkbox from './../../UIKit/Checkbox/Checkbox';
 
 const CheckboxParameter = ({ parameter }: IParameterProps) => {
-  console.log('CheckboxParameter', parameter);
-  debugger;
+  const [checked, setChecked] = React.useState<{ [key:string] : boolean}>({});
+
+  const onValueChangeHandler = (value, isChecked) => {
+    const newChecked = {...checked};
+    newChecked[value.key] = isChecked;
+    setChecked(newChecked);
+  }
+
   return (
     <div>
-      <label>{ parameter.name }</label>
+      <div>{ parameter.name }</div>
       {
         parameter.values.map((value) => (
-          <Checkbox key={value.key} checked={true} label={value.name}/>
+          <Checkbox key={value.key} checked={checked[value.key]}
+            onValueChange={(isChecked) => onValueChangeHandler(value, isChecked)} label={value.name}/>
         ))
       }
       

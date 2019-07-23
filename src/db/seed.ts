@@ -74,7 +74,7 @@ import console = require('console');
   newParam2.userSupplied = 'Radio';
   newParam2.inputType = InputType.Radio;
   newParam2.defaultValue = value2;
-  newParam2.values = [value1, value3, value4];
+  newParam2.values = [value1, value2, value3, value4];
 
   const param2 = await paramRepo.save(newParam2);
 
@@ -85,7 +85,7 @@ import console = require('console');
   newParam3.userSupplied = 'Select1';
   newParam3.inputType = InputType.Select;
   newParam3.defaultValue = value3;
-  newParam3.values = [ ];
+  newParam3.values = [value1, value3];
 
   const param3 = await paramRepo.save(newParam3);
 
